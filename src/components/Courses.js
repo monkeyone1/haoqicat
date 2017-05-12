@@ -18,7 +18,7 @@ class Courses extends Component {
     return (
       <div>
            <div style={styles.root}>
-        {this.props.courses.map((course, i) =><Course increment={this.props.increment} key={i} course={course} />
+        {this.props.courses.map((course, i) =><Course comments={this.props.comments[course.id]} increment={this.props.increment} key={i} course={course} />
 )}
       </div>
       </div>

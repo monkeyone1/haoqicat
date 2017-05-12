@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import CommentBox from './CommentBox';
+
 
 
 import Course from './Course';
@@ -20,7 +22,7 @@ class ShowCourse extends Component {
 
   render() {
     const { courseId } = this.props.params;
-
+    const comments = this.props.comments[courseId];
     const index = this.props.courses.findIndex((c) => c.id === courseId);
     const selectedCourse = this.props.courses[index];
 
@@ -30,10 +32,12 @@ class ShowCourse extends Component {
       <div>
         <div style={styles.top}>
           <div style={styles.container}>
-           <Course course={selectedCourse} increment={this.props.increment} />
-
+            <Course course={selectedCourse} 
+            increment={this.props.increment} 
+            comments={comments} />
           </div>
         </div>
+        <CommentBox comments={comments} />
       </div>
     );
   }
