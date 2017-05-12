@@ -52,17 +52,25 @@ class CommentBox extends Component {
       }
     }
   }
-
+  handleSubmit(e) {
+    e.preventDefault();
+    const courseId = this.props.params.courseId;
+    const author = this.refs.author.getValue();
+    const comment = this.refs.comment.getValue();
+    this.props.addComment(courseId, author, comment);
+    this.refs.commentForm.reset();
+  }
   render() {
     let styles = this.getStyles();
     let commentList;
-    if (this.props.comments !== undefined) {
-      commentList = this.props.comments.map((comment, i) => {
+    if (this.props.courseComments !== undefined) {
+      commentList = this.props.courseComments.map((comment, i) => {
         return (
           <div key={i} style={styles.comment}>
             <div style={styles.user}>{comment.user}: </div>
             <div style={styles.content}>{comment.text}</div>
-            <ActionHighlightOff color='red' style={styles.icon} />
+           <ActionHighlightOff color='red' style={styles.icon} onClick={this.props.removeComment.bind(null, this.props.params.courseId, i)} />
+
           </div>
         )
       });
@@ -71,11 +79,10 @@ class CommentBox extends Component {
       <div style={styles.root}>
         <Card style={styles.container}>
           {commentList}
-          <form ref="commentForm" style={styles.form}>
-            <TextField
-              ref='author'
-              style={styles.textField}
-              hintText="名字" />
+          <form ref="commentForm" onSubmit={this.handleSubmit.bind(this)} style={styles.form}>            <TextField
+            ref='author'
+            style={styles.textField}
+            hintText="名字" />
             <TextField
               ref='comment'
               style={styles.textField}

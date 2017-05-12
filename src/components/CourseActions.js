@@ -60,6 +60,7 @@ class CourseActions extends Component {
     };
   }
   render() {
+    console.log(this.props.comments);
     const { course } = this.props;
     let styles = this.getStyles();
     return (

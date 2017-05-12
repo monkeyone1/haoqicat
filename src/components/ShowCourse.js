@@ -37,7 +37,7 @@ class ShowCourse extends Component {
             comments={comments} />
           </div>
         </div>
-        <CommentBox comments={comments} />
+        <CommentBox courseComments={comments} {...this.props}  />
       </div>
     );
   }

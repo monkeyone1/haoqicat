@@ -38,6 +38,7 @@ class Course extends Component {
     };
   }
   render() {
+    
     const { course } = this.props;
     let styles = this.getStyles();
     return (
@@ -51,7 +52,7 @@ class Course extends Component {
               <span key={course.likes} className="likes-heart">{course.likes}</span>
             </CSSTransitionGroup>
           </div>
-          <CourseActions course={course} increment={this.props.increment} />
+          <CourseActions course={course} increment={this.props.increment} comments={this.props.comments}/>
 
         </Paper>
       </div>
