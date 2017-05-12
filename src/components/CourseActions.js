@@ -66,9 +66,11 @@ class CourseActions extends Component {
       <div style={styles.root}>
         <div style={styles.name}>{course.name}</div>
          <div style={styles.btnWrap}>
-         <button style={styles.button} onClick={this.props.increment} key='1'>
-            <ActionThumbUp color='#4c5765' style={styles.icon} />
-            <div>{this.props.likes}</div>
+        <button style={styles.button} onClick={this.props.increment.bind(null, parseInt(course.id) - 1)} key='1'>
+             <ActionThumbUp color='#4c5765' style={styles.icon} />
+                        
+
+             <div>{course.likes}</div>        
           </button>
 
           <Link to={`/view/${course.id}`} style={styles.a}>

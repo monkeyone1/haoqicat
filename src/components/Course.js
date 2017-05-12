@@ -48,10 +48,11 @@ class Course extends Component {
               <img src={course.image} alt={course.name} style={styles.img} />
             </Link>
             <CSSTransitionGroup transitionName="like" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-              <span key={this.state.likes} className="likes-heart">{this.state.likes}</span>
+              <span key={course.likes} className="likes-heart">{course.likes}</span>
             </CSSTransitionGroup>
           </div>
-          <CourseActions course={course} increment={this.increment.bind(this)} likes={this.state.likes} />
+          <CourseActions course={course} increment={this.props.increment} />
+
         </Paper>
       </div>
     );

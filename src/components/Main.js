@@ -30,7 +30,7 @@ class Main extends Component {
         <header style={styles.header}>
           <div style={styles.logo}>Hey 这是好奇猫</div>
         </header>
-        {this.props.children}
+        { React.cloneElement(this.props.children, this.props) }
       </StyleRoot>
       </MuiThemeProvider>
     );
